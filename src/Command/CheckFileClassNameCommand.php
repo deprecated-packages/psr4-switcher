@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Console\Command;
+namespace Migrify\Psr4Switcher\Command;
 
 use Migrify\Psr4Switcher\RobotLoader\PhpClassLoader;
 use Migrify\Psr4Switcher\ValueObject\Option;

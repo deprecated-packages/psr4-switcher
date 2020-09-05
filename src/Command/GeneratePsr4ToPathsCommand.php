@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Console\Command;
+namespace Migrify\Psr4Switcher\Command;
 
 use Migrify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
 use Migrify\Psr4Switcher\Psr4Filter;
