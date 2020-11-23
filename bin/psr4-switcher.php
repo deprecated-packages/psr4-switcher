@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Migrify\MigrifyKernel\Bootstrap\KernelBootAndApplicationRun;
 use Symplify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
+use Symplify\SymplifyKernel\ValueObject\KernelBootAndApplicationRun;
 
 $possibleAutoloadPaths = [
     // after split package
