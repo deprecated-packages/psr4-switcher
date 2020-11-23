@@ -1,18 +1,18 @@
 # PSR-4 Switcher
 
-[![Downloads total](https://img.shields.io/packagist/dt/migrify/psr4-switcher.svg?style=flat-square)](https://packagist.org/packages/migrify/psr4-switcher/stats)
+[![Downloads total](https://img.shields.io/packagist/dt/symplify/psr4-switcher.svg?style=flat-square)](https://packagist.org/packages/symplify/psr4-switcher/stats)
 
 How to switch to PSR4 in your `composer.json`?
 
 ## Install
 
 ```bash
-composer require migrify/psr4-switcher --dev
+composer require symplify/psr4-switcher --dev
 ```
 
 ## Usage
 
-Does short file name matches the class name? 
+Does short file name matches the class name?
 
 ```bash
 vendor/bin/psr4-switcher check-file-class-name src
@@ -23,7 +23,6 @@ What files have 2 and more classes?
 ```bash
 vendor/bin/psr4-switcher find-multi-classes tests
 ```
-
 
 ## Report Issues
 

@@ -2,24 +2,23 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Command;
+namespace Symplify\Psr4Switcher\Command;
 
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
 use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
-use Migrify\Psr4Switcher\Psr4Filter;
-use Migrify\Psr4Switcher\RobotLoader\PhpClassLoader;
-use Migrify\Psr4Switcher\ValueObject\Option;
-use Migrify\Psr4Switcher\ValueObject\Psr4NamespaceToPaths;
-use Migrify\Psr4Switcher\ValueObjectFactory\Psr4NamespaceToPathFactory;
-use Nette\Utils\Json;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
+use Symplify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
+use Symplify\Psr4Switcher\Json\JsonAutoloadPrinter;
+use Symplify\Psr4Switcher\Psr4Filter;
+use Symplify\Psr4Switcher\RobotLoader\PhpClassLoader;
+use Symplify\Psr4Switcher\ValueObject\Option;
+use Symplify\Psr4Switcher\ValueObjectFactory\Psr4NamespaceToPathFactory;
 
-final class GeneratePsr4ToPathsCommand extends AbstractMigrifyCommand
+final class GeneratePsr4ToPathsCommand extends AbstractSymplifyCommand
 {
     /**
      * @var Psr4SwitcherConfiguration
@@ -41,16 +40,23 @@ final class GeneratePsr4ToPathsCommand extends AbstractMigrifyCommand
      */
     private $psr4Filter;
 
+    /**
+     * @var JsonAutoloadPrinter
+     */
+    private $jsonAutoloadPrinter;
+
     public function __construct(
         Psr4SwitcherConfiguration $psr4SwitcherConfiguration,
         PhpClassLoader $phpClassLoader,
         Psr4NamespaceToPathFactory $psr4NamespaceToPathFactory,
-        Psr4Filter $psr4Filter
+        Psr4Filter $psr4Filter,
+        JsonAutoloadPrinter $jsonAutoloadPrinter
     ) {
         $this->phpClassLoader = $phpClassLoader;
         $this->psr4SwitcherConfiguration = $psr4SwitcherConfiguration;
         $this->psr4NamespaceToPathFactory = $psr4NamespaceToPathFactory;
         $this->psr4Filter = $psr4Filter;
+        $this->jsonAutoloadPrinter = $jsonAutoloadPrinter;
 
         parent::__construct();
     }
@@ -82,7 +88,8 @@ final class GeneratePsr4ToPathsCommand extends AbstractMigrifyCommand
         }
 
         $psr4NamespaceToPaths = $this->psr4Filter->filter($psr4NamespacesToPaths);
-        $this->printJsonAutoload($psr4NamespaceToPaths);
+        $jsonAutoloadContent = $this->jsonAutoloadPrinter->createJsonAutoloadContent($psr4NamespaceToPaths);
+        $this->symfonyStyle->writeln($jsonAutoloadContent);
 
         $this->symfonyStyle->success('Done');
 
@@ -92,57 +99,5 @@ final class GeneratePsr4ToPathsCommand extends AbstractMigrifyCommand
         }
 
         return ShellCode::SUCCESS;
-    }
-
-    /**
-     * @param Psr4NamespaceToPaths[] $psr4NamespacesToPaths
-     */
-    private function normalizePsr4NamespaceToPathsToJsonsArray(array $psr4NamespacesToPaths): array
-    {
-        $data = [];
-
-        foreach ($psr4NamespacesToPaths as $psr4NamespaceToPaths) {
-            $namespaceRoot = $this->normalizeNamespaceRoot($psr4NamespaceToPaths->getNamespace());
-            $data[$namespaceRoot] = $this->resolvePaths($psr4NamespaceToPaths);
-        }
-
-        ksort($data);
-
-        return $data;
-    }
-
-    /**
-     * @param Psr4NamespaceToPaths[] $psr4NamespaceToPaths
-     */
-    private function printJsonAutoload(array $psr4NamespaceToPaths): void
-    {
-        $normalizedJsonArray = $this->normalizePsr4NamespaceToPathsToJsonsArray($psr4NamespaceToPaths);
-        $composerData = [
-            'autoload' => [
-                'psr-4' => $normalizedJsonArray,
-            ],
-        ];
-        $json = Json::encode($composerData, Json::PRETTY);
-
-        $this->symfonyStyle->writeln($json);
-    }
-
-    private function normalizeNamespaceRoot(string $namespace): string
-    {
-        return rtrim($namespace, '\\') . '\\';
-    }
-
-    /**
-     * @return string|string[]
-     */
-    private function resolvePaths(Psr4NamespaceToPaths $psr4NamespaceToPaths)
-    {
-        if (count($psr4NamespaceToPaths->getPaths()) > 1) {
-            $paths = $psr4NamespaceToPaths->getPaths();
-            sort($paths);
-            return $paths;
-        }
-
-        return $psr4NamespaceToPaths->getPaths()[0];
     }
 }

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Migrify\MigrifyKernel\Bootstrap\KernelBootAndApplicationRun;
-use Migrify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
+use Symplify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
 
 $possibleAutoloadPaths = [
     // after split package

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\HttpKernel;
+namespace Symplify\Psr4Switcher\HttpKernel;
 
-use Migrify\MigrifyKernel\Bundle\MigrifyKernelBundle;
-use Migrify\MigrifyKernel\HttpKernel\AbstractMigrifyKernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 use Symplify\ComposerJsonManipulator\ComposerJsonManipulatorBundle;
+use Symplify\SymplifyKernel\Bundle\SymplifyKernelBundle;
+use Symplify\SymplifyKernel\HttpKernel\AbstractSymplifyKernel;
 
-final class Psr4SwitcherKernel extends AbstractMigrifyKernel
+final class Psr4SwitcherKernel extends AbstractSymplifyKernel
 {
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
@@ -22,6 +22,6 @@ final class Psr4SwitcherKernel extends AbstractMigrifyKernel
      */
     public function registerBundles(): array
     {
-        return [new ComposerJsonManipulatorBundle(), new MigrifyKernelBundle()];
+        return [new ComposerJsonManipulatorBundle(), new SymplifyKernelBundle()];
     }
 }

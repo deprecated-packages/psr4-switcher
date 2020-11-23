@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\ValueObject;
+namespace Symplify\Psr4Switcher\ValueObject;
 
 final class Psr4NamespaceToPath
 {

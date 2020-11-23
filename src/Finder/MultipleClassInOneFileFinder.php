@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Finder;
+namespace Symplify\Psr4Switcher\Finder;
 
-use Migrify\Psr4Switcher\RobotLoader\PhpClassLoader;
+use Symplify\Psr4Switcher\RobotLoader\PhpClassLoader;
 
 final class MultipleClassInOneFileFinder
 {

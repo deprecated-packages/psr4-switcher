@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\ValueObjectFactory;
+namespace Symplify\Psr4Switcher\ValueObjectFactory;
 
-use Migrify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
-use Migrify\Psr4Switcher\Utils\MigrifyStrings;
-use Migrify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
 use Nette\Utils\Strings;
+use Symplify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
+use Symplify\Psr4Switcher\Utils\MigrifyStrings;
+use Symplify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
 
 final class Psr4NamespaceToPathFactory
 {

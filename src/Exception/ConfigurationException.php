@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Exception;
+namespace Symplify\Psr4Switcher\Exception;
 
 use Exception;
 

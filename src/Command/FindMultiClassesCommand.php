@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Command;
+namespace Symplify\Psr4Switcher\Command;
 
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
 use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\Psr4Switcher\Finder\MultipleClassInOneFileFinder;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
+use Symplify\Psr4Switcher\Finder\MultipleClassInOneFileFinder;
 
-final class FindMultiClassesCommand extends AbstractMigrifyCommand
+final class FindMultiClassesCommand extends AbstractSymplifyCommand
 {
     /**
      * @var MultipleClassInOneFileFinder

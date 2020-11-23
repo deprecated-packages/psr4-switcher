@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Tests\ValueObjectFactory\Psr4NamespaceToPathFactory;
+namespace Symplify\Psr4Switcher\Tests\ValueObjectFactory\Psr4NamespaceToPathFactory;
 
 use Iterator;
-use Migrify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
-use Migrify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
-use Migrify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
-use Migrify\Psr4Switcher\ValueObjectFactory\Psr4NamespaceToPathFactory;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Symplify\Psr4Switcher\Configuration\Psr4SwitcherConfiguration;
+use Symplify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
+use Symplify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
+use Symplify\Psr4Switcher\ValueObjectFactory\Psr4NamespaceToPathFactory;
 
 final class Psr4NamespaceToPathFactoryTest extends AbstractKernelTestCase
 {

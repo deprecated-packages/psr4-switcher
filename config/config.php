@@ -12,6 +12,6 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->autowire()
         ->autoconfigure();
 
-    $services->load('Migrify\Psr4Switcher\\', __DIR__ . '/../src')
+    $services->load('Symplify\Psr4Switcher\\', __DIR__ . '/../src')
         ->exclude([__DIR__ . '/../src/HttpKernel', __DIR__ . '/../src/ValueObject']);
 };

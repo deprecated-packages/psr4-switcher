@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher;
+namespace Symplify\Psr4Switcher;
 
-use Migrify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
-use Migrify\Psr4Switcher\ValueObject\Psr4NamespaceToPaths;
+use Symplify\Psr4Switcher\ValueObject\Psr4NamespaceToPath;
+use Symplify\Psr4Switcher\ValueObject\Psr4NamespaceToPaths;
 
 final class Psr4Filter
 {

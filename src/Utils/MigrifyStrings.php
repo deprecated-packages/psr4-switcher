@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Utils;
+namespace Symplify\Psr4Switcher\Utils;
 
 use Nette\Utils\Strings;
 
 /**
- * @see \Migrify\Psr4Switcher\Tests\Utils\MigrifyStringsTest
+ * @see \Symplify\Psr4Switcher\Tests\Utils\MigrifyStringsTest
  */
 final class MigrifyStrings
 {

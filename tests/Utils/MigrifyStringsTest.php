@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Tests\Utils;
+namespace Symplify\Psr4Switcher\Tests\Utils;
 
 use Iterator;
-use Migrify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
-use Migrify\Psr4Switcher\Utils\MigrifyStrings;
 use Symplify\PackageBuilder\Testing\AbstractKernelTestCase;
+use Symplify\Psr4Switcher\HttpKernel\Psr4SwitcherKernel;
+use Symplify\Psr4Switcher\Utils\MigrifyStrings;
 
 final class MigrifyStringsTest extends AbstractKernelTestCase
 {

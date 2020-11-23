@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\RobotLoader;
+namespace Symplify\Psr4Switcher\RobotLoader;
 
 use Nette\Loaders\RobotLoader;
 

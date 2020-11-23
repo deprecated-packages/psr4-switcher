@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Configuration;
+namespace Symplify\Psr4Switcher\Configuration;
 
 use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\Psr4Switcher\Exception\ConfigurationException;
-use Migrify\Psr4Switcher\ValueObject\Option;
 use Symfony\Component\Console\Input\InputInterface;
+use Symplify\Psr4Switcher\Exception\ConfigurationException;
+use Symplify\Psr4Switcher\ValueObject\Option;
 use Symplify\SmartFileSystem\FileSystemGuard;
 
 final class Psr4SwitcherConfiguration

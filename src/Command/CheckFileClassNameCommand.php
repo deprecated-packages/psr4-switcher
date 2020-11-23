@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\Command;
+namespace Symplify\Psr4Switcher\Command;
 
-use Migrify\MigrifyKernel\Command\AbstractMigrifyCommand;
-use Migrify\MigrifyKernel\ValueObject\MigrifyOption;
-use Migrify\Psr4Switcher\RobotLoader\PhpClassLoader;
 use Nette\Utils\Strings;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symplify\PackageBuilder\Console\Command\AbstractSymplifyCommand;
 use Symplify\PackageBuilder\Console\ShellCode;
+use Symplify\Psr4Switcher\RobotLoader\PhpClassLoader;
+use Symplify\Psr4Switcher\ValueObject\Option;
 use Symplify\SmartFileSystem\SmartFileInfo;
 
-final class CheckFileClassNameCommand extends AbstractMigrifyCommand
+final class CheckFileClassNameCommand extends AbstractSymplifyCommand
 {
     /**
      * @var PhpClassLoader
@@ -32,13 +32,13 @@ final class CheckFileClassNameCommand extends AbstractMigrifyCommand
     {
         $this->setDescription('Check if short file name is same as class name');
 
-        $this->addArgument(MigrifyOption::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
+        $this->addArgument(Option::SOURCES, InputArgument::REQUIRED | InputArgument::IS_ARRAY, 'Path to source');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string[] $sources */
-        $sources = (array) $input->getArgument(MigrifyOption::SOURCES);
+        $sources = (array) $input->getArgument(Option::SOURCES);
         $classesToFiles = $this->phpClassLoader->load($sources);
 
         $missMatchingClassNamesByFiles = [];

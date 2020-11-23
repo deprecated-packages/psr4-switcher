@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Migrify\Psr4Switcher\ValueObject;
+namespace Symplify\Psr4Switcher\ValueObject;
 
 final class Option
 {
@@ -10,4 +10,9 @@ final class Option
      * @var string
      */
     public const COMPOSER_JSON = 'composer-json';
+
+    /**
+     * @var string
+     */
+    public const SOURCES = 'sources';
 }
