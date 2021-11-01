@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Symplify\Psr4Switcher\HttpKernel;
+namespace Symplify\Psr4Switcher\Kernel;
 
 use Psr\Container\ContainerInterface;
 use Symplify\ComposerJsonManipulator\ValueObject\ComposerJsonManipulatorConfig;
